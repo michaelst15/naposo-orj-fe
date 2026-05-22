@@ -35,7 +35,8 @@ Environment backend ada di `.env` (DATABASE_URL, CORS_ORIGINS).
 
 2. Pastikan `.env` berisi URL backend yang benar:
 
-   - `VITE_BACKEND_URL=http://localhost:8000`
+   - Local: `VITE_BACKEND_URL=http://127.0.0.1:8000`
+   - Production: `VITE_BACKEND_URL=https://naposo-95yfl3ws.b4a.run`
 
 3. Install dependency:
 
@@ -49,4 +50,4 @@ Environment backend ada di `.env` (DATABASE_URL, CORS_ORIGINS).
    npm run dev
    ```
 
-Frontend akan jalan di `http://localhost:5173`.
+Frontend akan jalan di `http://127.0.0.1:5173`.
