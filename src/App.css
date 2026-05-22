@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #FAFAF9;
+  color: #171717;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+.neo-card {
+  background: white;
+  border: 2px solid #171717;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(23, 23, 23, 1);
+  overflow: hidden;
+}
+
+.neo-card-hover {
+  transition: transform 0.15s ease-out;
+}
+
+.neo-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px 0px rgba(23, 23, 23, 1);
+}
+
+.neo-button {
+  background: #FDE047;
+  color: #171717;
+  border: 2px solid #171717;
+  border-radius: 9999px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 4px 4px 0px 0px rgba(23, 23, 23, 1);
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.neo-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(23, 23, 23, 1);
+}
+
+.neo-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px 0px rgba(23, 23, 23, 1);
+}
+
+.neo-input {
+  background: white;
+  border: 2px solid #171717;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+.neo-input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #FDE047;
+  border-color: #171717;
+}
+
+.sticker-float {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bg-pastel-yellow {
+  background-color: #FDE047;
+}
+
+.bg-pastel-mint {
+  background-color: #A7F3D0;
+}
+
+.bg-pastel-lavender {
+  background-color: #DDD6FE;
+}
+
+.bg-pastel-peach {
+  background-color: #FFD166;
+}
+
+.bg-pastel-blue {
+  background-color: #7DD3FC;
+}
