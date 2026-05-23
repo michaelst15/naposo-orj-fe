@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CalendarBlank, Clock } from "@phosphor-icons/react";
 import { normalizeList } from "@/api/normalize";
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
-const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
+import { API_BASE } from "@/api/client";
 
 const Aktivitas = () => {
   const [activities, setActivities] = useState([]);
@@ -17,7 +15,7 @@ const Aktivitas = () => {
 
   const fetchActivities = async () => {
     try {
-      const url = filter === "all" ? `${API}/activities` : `${API}/activities?status=${filter}`;
+      const url = filter === "all" ? `${API_BASE}/activities` : `${API_BASE}/activities?status=${filter}`;
       const response = await axios.get(url);
       setActivities(normalizeList(response.data));
     } catch (error) {

@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { User } from "@phosphor-icons/react";
 import { normalizeList } from "@/api/normalize";
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
-const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
+import { API_BASE } from "@/api/client";
 
 const Pengurus = () => {
   const [pengurus, setPengurus] = useState([]);
@@ -16,7 +14,7 @@ const Pengurus = () => {
 
   const fetchPengurus = async () => {
     try {
-      const response = await axios.get(`${API}/pengurus`);
+      const response = await axios.get(`${API_BASE}/pengurus`);
       setPengurus(normalizeList(response.data));
     } catch (error) {
       console.error("Error fetching pengurus:", error);

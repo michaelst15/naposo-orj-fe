@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { CheckCircle, PaperPlaneRight } from "@phosphor-icons/react";
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
-const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
+import { API_BASE } from "@/api/client";
 
 const Daftar = () => {
   const [form, setForm] = useState({
@@ -27,7 +25,7 @@ const Daftar = () => {
     setSubmitting(true);
 
     try {
-      await axios.post(`${API}/registrations`, form);
+      await axios.post(`${API_BASE}/registrations`, form);
       setSubmitted(true);
       setForm({
         nama: "",

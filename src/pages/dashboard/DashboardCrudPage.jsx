@@ -12,6 +12,12 @@ function compare(a, b) {
   return String(a).localeCompare(String(b));
 }
 
+function getErrorMessage(e, fallback) {
+  const detail = e?.response?.data?.detail;
+  const message = e?.response?.data?.message;
+  return String(detail || message || fallback || "Terjadi kesalahan.");
+}
+
 const DashboardCrudPage = ({ title, badgeClass, resource, columns, fields, defaultSortKey, sortKeys, searchKeys }) => {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -32,7 +38,7 @@ const DashboardCrudPage = ({ title, badgeClass, resource, columns, fields, defau
       const resp = await api.get(resource);
       setItems(normalizeList(resp.data));
     } catch (e) {
-      setError("Gagal memuat data.");
+      setError(getErrorMessage(e, "Gagal memuat data."));
     } finally {
       setLoading(false);
     }
@@ -73,7 +79,7 @@ const DashboardCrudPage = ({ title, badgeClass, resource, columns, fields, defau
       setConfirmOpen(false);
       setSelected(null);
     } catch (e) {
-      setError("Gagal menghapus data.");
+      setError(getErrorMessage(e, "Gagal menghapus data."));
     } finally {
       setBusy(false);
     }
@@ -96,7 +102,7 @@ const DashboardCrudPage = ({ title, badgeClass, resource, columns, fields, defau
       setConfirmOpen(false);
       setSelected(null);
     } catch (e) {
-      setError("Gagal menyimpan perubahan.");
+      setError(getErrorMessage(e, "Gagal menyimpan perubahan."));
     } finally {
       setBusy(false);
     }

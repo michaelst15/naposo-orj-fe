@@ -4,9 +4,7 @@ import Marquee from "react-fast-marquee";
 import { ArrowRight, Users, CalendarDots, Sparkle } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 import { normalizeList } from "@/api/normalize";
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
-const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
+import { API_BASE } from "@/api/client";
 
 const Home = () => {
   const [activities, setActivities] = useState([]);
@@ -19,7 +17,7 @@ const Home = () => {
 
   const seedData = async () => {
     try {
-      await axios.post(`${API}/seed`);
+      await axios.post(`${API_BASE}/seed`);
     } catch (error) {
       console.log("Seed data might already exist");
     }
@@ -27,7 +25,7 @@ const Home = () => {
 
   const fetchActivities = async () => {
     try {
-      const response = await axios.get(`${API}/activities?status=upcoming`);
+      const response = await axios.get(`${API_BASE}/activities?status=upcoming`);
       setActivities(normalizeList(response.data).slice(0, 3));
     } catch (error) {
       console.error("Error fetching activities:", error);
