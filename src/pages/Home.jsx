@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchActivities();
-    seedData();
+    if (import.meta.env.DEV) seedData();
   }, []);
 
   const seedData = async () => {
