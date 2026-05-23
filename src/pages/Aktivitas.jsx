@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CalendarBlank, Clock } from "@phosphor-icons/react";
+import { normalizeList } from "@/api/normalize";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
@@ -18,7 +19,7 @@ const Aktivitas = () => {
     try {
       const url = filter === "all" ? `${API}/activities` : `${API}/activities?status=${filter}`;
       const response = await axios.get(url);
-      setActivities(response.data);
+      setActivities(normalizeList(response.data));
     } catch (error) {
       console.error("Error fetching activities:", error);
     } finally {

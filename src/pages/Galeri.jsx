@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ImagesSquare } from "@phosphor-icons/react";
+import { normalizeList } from "@/api/normalize";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
@@ -16,7 +17,7 @@ const Galeri = () => {
   const fetchGallery = async () => {
     try {
       const response = await axios.get(`${API}/gallery`);
-      setItems(response.data);
+      setItems(normalizeList(response.data));
     } catch (error) {
       console.error("Error fetching gallery:", error);
     } finally {

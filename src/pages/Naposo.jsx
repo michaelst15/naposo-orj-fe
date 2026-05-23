@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MagnifyingGlass, Users, Funnel } from "@phosphor-icons/react";
+import { normalizeList } from "@/api/normalize";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
@@ -26,10 +27,11 @@ const Naposo = () => {
   const fetchMembers = async () => {
     try {
       const response = await axios.get(`${API}/members`);
-      setMembers(response.data);
+      const list = normalizeList(response.data);
+      setMembers(list);
 
-      const angkatans = [...new Set(response.data.map((m) => m.angkatan))];
-      const posisis = [...new Set(response.data.map((m) => m.posisi))];
+      const angkatans = [...new Set(list.map((m) => m.angkatan))];
+      const posisis = [...new Set(list.map((m) => m.posisi))];
       setAngkatanList(angkatans);
       setPosisiList(posisis);
     } catch (error) {

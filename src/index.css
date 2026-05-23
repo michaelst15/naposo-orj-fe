@@ -12,6 +12,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.mobile-menu-open #root {
+    filter: blur(12px);
+}
+
 code {
     font-family:
         source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -124,7 +128,7 @@ code {
 
 @layer components {
     .cursor-dot {
-        @apply fixed left-0 top-0 z-[9999] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white pointer-events-none transition-[width,height,background-color] duration-300;
+        @apply fixed left-0 top-0 z-[9999] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ca8a04] pointer-events-none transition-[width,height,background-color] duration-300;
     }
 
     .cursor-outline {
@@ -132,7 +136,7 @@ code {
     }
 
     body.hovering .cursor-dot {
-        @apply h-[50px] w-[50px] bg-white/10;
+        @apply h-[50px] w-[50px] bg-[#ca8a04]/10;
     }
 
     body.hovering .cursor-outline {

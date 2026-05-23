@@ -3,6 +3,7 @@ import axios from "axios";
 import Marquee from "react-fast-marquee";
 import { ArrowRight, Users, CalendarDots, Sparkle } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import { normalizeList } from "@/api/normalize";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 const API = (BACKEND_URL ? `${BACKEND_URL}`.replace(/\/$/, "") : "") + "/api";
@@ -27,7 +28,7 @@ const Home = () => {
   const fetchActivities = async () => {
     try {
       const response = await axios.get(`${API}/activities?status=upcoming`);
-      setActivities(response.data.slice(0, 3));
+      setActivities(normalizeList(response.data).slice(0, 3));
     } catch (error) {
       console.error("Error fetching activities:", error);
     } finally {
@@ -59,7 +60,10 @@ const Home = () => {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none mb-6">
                 NAPOSO
                 <br />
-                <span className="text-pastel-yellow" style={{ WebkitTextStroke: "2px black" }}>
+                <span
+                  className="text-pastel-yellow tracking-[0.12em] sm:tracking-tighter"
+                  style={{ WebkitTextStroke: "2px black" }}
+                >
                   ORJ Lumban Tobing
                 </span>
               </h1>
